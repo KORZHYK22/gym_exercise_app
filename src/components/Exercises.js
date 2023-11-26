@@ -13,6 +13,22 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
 	const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
 	const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
 
+	useEffect(() => {
+		const fetchExercisesData = async () => {
+			let exercisesData = [];
+
+			if (bodyPart === "all") {
+				exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises?limit=900", exerciseOptions);
+			} else {
+				exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
+			}
+
+			setExercises(exercisesData);
+		};
+
+		fetchExercisesData();
+	}, [bodyPart]);
+
 	const paginate = (e, value) => {
 		setCurrentPage(value);
 
