@@ -13,6 +13,9 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => (
 				? { borderTop: "4px solid #FF2625", background: "#fff", borderBottomLeftRadius: "20px", width: "270px", height: "282px", cursor: "pointer", gap: "47px" }
 				: { background: "#fff", borderBottomLeftRadius: "20px", width: "270px", height: "282px", cursor: "pointer", gap: "47px" }
 		}
+		onClick={() => {
+			setBodyPart(item);
+		}}
 	>
 		<img src={Icon} alt="dumbbell" style={{ width: "40px", height: "40px" }} />
 		<Typography fontSize="24px" fontWeight="bolt" color="#3A1212" textTransform="capitalize">
